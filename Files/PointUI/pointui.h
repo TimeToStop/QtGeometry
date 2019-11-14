@@ -19,8 +19,6 @@ class PointUI : public Object
 
     bool m_is_selected;
 
-    QString m_name;
-
     QPoint m_pos;
     QPointF m_posXOY;
 
@@ -31,7 +29,6 @@ public:
 
     void setSelected(bool);
     bool isSelected() const;
-    QString name() const;
 
     QPointF posXOY() const;
     QPoint pos() const;

@@ -27,19 +27,16 @@ Shape::~Shape()
 
 }
 
-QString Shape::name() const
-{
-    return m_name;
-}
-
 Type Shape::type() const
 {
     return m_type;
 }
 
-void Shape::setName(const QString & name)
+QString Shape::nameAndType() const
 {
-    m_name = name;
+    switch(m_type)
+    {
+    case Line: return "Line: " + name();
+    }
 }
-
 

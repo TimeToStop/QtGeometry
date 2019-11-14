@@ -10,7 +10,7 @@ CreateShapeDialog::CreateShapeDialog(std::vector<Shape*>& shapes, QWidget *paren
     QDialog(parent),
     m_shapes(shapes)
 {
-    setFixedSize(300, 75);
+    setFixedSize(300, 100);
 
     QVBoxLayout* main = new QVBoxLayout(this);
 

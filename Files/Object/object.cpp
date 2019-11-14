@@ -126,9 +126,19 @@ void Object::hideProperties() const
     m_is_properties_open = false;
 }
 
+QString Object::name() const
+{
+    return m_name;
+}
+
 void Object::setPropertiesDialog(PropertiesObjectDialog * properties)
 {
     m_properties = properties;
+}
+
+void Object::setName(const QString& name)
+{
+    m_name = name;
 }
 
 void Object::addChild(Object* child)

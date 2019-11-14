@@ -30,24 +30,6 @@ SOURCES += \
     Files/Shape/shape.cpp \
     Files/double.cpp \
     Files/field.cpp \
-    Project/main.cpp \
-    Project/widget.cpp \
-    ProjectFiles/Object/object.cpp \
-    ProjectFiles/Object/propertiesobjectdialog.cpp \
-    ProjectFiles/PointUI/createpointdialog.cpp \
-    ProjectFiles/PointUI/pointui.cpp \
-    ProjectFiles/PointUI/propertiespointuidialog.cpp \
-    ProjectFiles/PointUI/removepointdialog.cpp \
-    ProjectFiles/Shape/createabstractshapedialog.cpp \
-    ProjectFiles/Shape/createshapedialog.cpp \
-    ProjectFiles/Shape/propertiesshapedialog.cpp \
-    ProjectFiles/Shape/removeshapedialog.cpp \
-    ProjectFiles/Shape/shape.cpp \
-    ProjectFiles/double.cpp \
-    ProjectFiles/field.cpp \
-    ProjectFiles/main.cpp \
-    ProjectFiles/widget.cpp \
-    main.cpp \
     main.cpp \
     widget.cpp
 
@@ -66,20 +48,6 @@ HEADERS += \
     Files/Shape/shape.h \
     Files/double.h \
     Files/field.h \
-    ProjectFiles/Object/object.h \
-    ProjectFiles/Object/propertiesobjectdialog.h \
-    ProjectFiles/PointUI/createpointdialog.h \
-    ProjectFiles/PointUI/pointui.h \
-    ProjectFiles/PointUI/propertiespointuidialog.h \
-    ProjectFiles/PointUI/removepointdialog.h \
-    ProjectFiles/Shape/createabstractshapedialog.h \
-    ProjectFiles/Shape/createshapedialog.h \
-    ProjectFiles/Shape/propertiesshapedialog.h \
-    ProjectFiles/Shape/removeshapedialog.h \
-    ProjectFiles/Shape/shape.h \
-    ProjectFiles/double.h \
-    ProjectFiles/field.h \
-    ProjectFiles/widget.h \
     widget.h
 
 # Default rules for deployment.

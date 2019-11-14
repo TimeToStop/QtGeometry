@@ -10,21 +10,21 @@ const int PointUI::m_text_delta_unselected = 7;
 PointUI::PointUI(const QPointF & pos, const QString & name):
     Object(),
     m_is_selected(false),
-    m_name(name),
     m_pos(m_field->fromXOY(pos)),
     m_posXOY(pos)
 {
     setPropertiesDialog(new PropertiesPointUIDialog(this, m_field));
+    setName(name);
 }
 
 PointUI::PointUI(Double x, Double y, const QString & name):
     Object(),
     m_is_selected(false),
-    m_name(name),
     m_pos(m_field->fromXOY(QPointF(x, y))),
     m_posXOY(x, y)
 {
     setPropertiesDialog(new PropertiesPointUIDialog(this, m_field));
+    setName(name);
 }
 
 PointUI::~PointUI()
@@ -40,11 +40,6 @@ void PointUI::setSelected(bool b)
 bool PointUI::isSelected() const
 {
     return m_is_selected;
-}
-
-QString PointUI::name() const
-{
-    return m_name;
 }
 
 QPointF PointUI::posXOY() const

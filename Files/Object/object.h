@@ -28,6 +28,9 @@ private:
     mutable bool m_is_properties_open;
     PropertiesObjectDialog* m_properties;
 
+protected:
+    QString m_name;
+
 public:
     Object();
     Object(Object*);
@@ -42,8 +45,11 @@ public:
     void showProperties() const;
     void hideProperties() const;
 
+    QString name() const;
+
 protected:
     void setPropertiesDialog(PropertiesObjectDialog*);
+    void setName(const QString&);
 
 private:
     void addChild(Object*);

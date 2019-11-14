@@ -10,7 +10,7 @@
 ChoosePointUIDialog::ChoosePointUIDialog(const std::vector<PointUI*>& points, QWidget *parent) :
     QDialog(parent)
 {
-    setFixedSize(100, 50);
+    setFixedSize(200, 100);
 
     QVBoxLayout* main = new QVBoxLayout(this);
 
@@ -24,7 +24,7 @@ ChoosePointUIDialog::ChoosePointUIDialog(const std::vector<PointUI*>& points, QW
 
     QHBoxLayout* buttons = new QHBoxLayout();
 
-    QSpacerItem* spacer = new QSpacerItem(20, 100);
+    QSpacerItem* spacer = new QSpacerItem(50, 10);
     QPushButton* button = new QPushButton("Ok");
 
     buttons->addSpacerItem(spacer);

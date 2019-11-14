@@ -4,6 +4,7 @@
 #include "PointUI/createpointdialog.h"
 
 #include "Shape/chooseshapedialog.h"
+#include "Shape/createshapedialog.h"
 
 Field::Field(int w, int h, QWidget* parent):
     QWidget(parent),
@@ -292,24 +293,51 @@ inline int Field::min(int a, int b) const
     return (a < b) ? a : b;
 }
 
-void Field::addPointDialog()
+void Field::addPointUIDialog()
 {
     CreatePointDialog dialog(m_points, this);
 
     dialog.exec();
 }
 
-void Field::rmPointDialog()
+void Field::openPointUIPropertiesDialog()
 {
     if(m_points.size())
     {
         ChoosePointUIDialog dialog(m_points, this);
 
-        int r = dialog.exec();
+        m_points[dialog.exec()]->showProperties();
+    }
+}
+
+void Field::openShapePropertiesDialog()
+{
+    if(m_shapes.size())
+    {
+        ChooseShapeDialog dialog(m_shapes, this);
+
+        m_shapes[dialog.exec()]->showProperties();
+    }
+}
+
+void Field::rmPointUIDialog()
+{
+    if(m_points.size())
+    {
+        ChoosePointUIDialog dialog(m_points, this);
+
+        const int r = dialog.exec();
 
         delete m_points[r];
         m_points.erase(m_points.begin() + r);
     }
+}
+
+void Field::addShapeDialog()
+{
+    CreateShapeDialog dialog(m_shapes, this);
+
+    dialog.exec();
 }
 
 void Field::rmShapeDialog()
@@ -318,7 +346,7 @@ void Field::rmShapeDialog()
     {
         ChooseShapeDialog dialog(m_shapes, this);
 
-        int r = dialog.exec();
+        const int r = dialog.exec();
 
         delete m_shapes[r];
         m_shapes.erase(m_shapes.begin() + r);

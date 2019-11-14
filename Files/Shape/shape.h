@@ -10,7 +10,6 @@ enum Type
 
 class Shape : public Object
 {
-    QString m_name;
     Type m_type;
 
 public:
@@ -23,11 +22,8 @@ public:
     virtual void recount() = 0;
     virtual void draw(QPainter&) const = 0;
 
-    QString name() const;
     Type type() const;
-
-protected:
-    void setName(const QString&);
+    QString nameAndType() const;
 };
 
 #endif // SHAPE_H

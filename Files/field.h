@@ -64,9 +64,12 @@ signals:
 
 public slots:
 
-    void addPointDialog();
-    void rmPointDialog();
+    void addPointUIDialog();
+    void openPointUIPropertiesDialog();
+    void rmPointUIDialog();
 
+    void addShapeDialog();
+    void openShapePropertiesDialog();
     void rmShapeDialog();
 };
 

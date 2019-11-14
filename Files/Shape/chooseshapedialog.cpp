@@ -10,7 +10,7 @@
 ChooseShapeDialog::ChooseShapeDialog(const std::vector<Shape*>& points, QWidget *parent) :
     QDialog(parent)
 {
-    setFixedSize(100, 50);
+    setFixedSize(200, 100);
 
     QVBoxLayout* main = new QVBoxLayout(this);
 
@@ -24,7 +24,7 @@ ChooseShapeDialog::ChooseShapeDialog(const std::vector<Shape*>& points, QWidget 
 
     QHBoxLayout* buttons = new QHBoxLayout();
 
-    QSpacerItem* spacer = new QSpacerItem(20, 100);
+    QSpacerItem* spacer = new QSpacerItem(50, 10);
     QPushButton* button = new QPushButton("Ok");
 
     buttons->addSpacerItem(spacer);
@@ -37,7 +37,7 @@ ChooseShapeDialog::ChooseShapeDialog(const std::vector<Shape*>& points, QWidget 
 
     for(Shape* e : points)
     {
-        m_list->addItem(e->name());
+        m_list->addItem(e->nameAndType());
     }
 
     connect(button, SIGNAL(clicked()), this, SLOT(admit()));

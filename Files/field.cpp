@@ -1,9 +1,9 @@
 #include "field.h"
 
-#include "PointUI/removepointdialog.h"
+#include "PointUI/choosepointuidialog.h"
 #include "PointUI/createpointdialog.h"
 
-#include "Shape/removeshapedialog.h"
+#include "Shape/chooseshapedialog.h"
 
 Field::Field(int w, int h, QWidget* parent):
     QWidget(parent),
@@ -303,9 +303,12 @@ void Field::rmPointDialog()
 {
     if(m_points.size())
     {
-        RemovePointDialog dialog(m_points, this);
+        ChoosePointUIDialog dialog(m_points, this);
 
-        dialog.exec();
+        int r = dialog.exec();
+
+        delete m_points[r];
+        m_points.erase(m_points.begin() + r);
     }
 }
 
@@ -313,8 +316,11 @@ void Field::rmShapeDialog()
 {
     if(m_shapes.size())
     {
-        RemoveShapeDialog dialog(m_shapes, this);
+        ChooseShapeDialog dialog(m_shapes, this);
 
-        dialog.exec();
+        int r = dialog.exec();
+
+        delete m_shapes[r];
+        m_shapes.erase(m_shapes.begin() + r);
     }
 }

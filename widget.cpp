@@ -41,9 +41,12 @@ Widget::Widget(QWidget *parent)
 
     buttons->addSpacerItem(spacer2);
 
-    connect(addPoint, SIGNAL(clicked()), field, SLOT(addPointDialog()));
-    connect(rmPoint, SIGNAL(clicked()), field, SLOT(rmPointDialog()));
+    connect(addPoint, SIGNAL(clicked()), field, SLOT(addPointUIDialog()));
+    connect(propPoint, SIGNAL(clicked()), field, SLOT(openPointUIPropertiesDialog()));
+    connect(rmPoint, SIGNAL(clicked()), field, SLOT(rmPointUIDialog()));
 
+    connect(addShape, SIGNAL(clicked()), field, SLOT(addShapeDialog()));
+    connect(propShape, SIGNAL(clicked()), field, SLOT(openShapePropertiesDialog()));
     connect(rmShape, SIGNAL(clicked()), field, SLOT(rmShapeDialog()));
 }
 

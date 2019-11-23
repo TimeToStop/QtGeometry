@@ -7,6 +7,7 @@ class Double
     long double m_x;
 
 public:
+    Double(): m_x(0) {}
     template <typename T> Double(T x) : m_x(x) {}
     Double(const Double& other) : m_x(other.m_x) {}
 
@@ -29,70 +30,68 @@ public:
         return static_cast<T>(m_x);
     }
 
-    bool operator==(const Double& other)
+    bool operator==(const Double& other) const
     {
         return (abs(other.m_x - m_x) <= m_diff);
     }
 
-    bool operator!=(const Double& other)
+    bool operator!=(const Double& other) const
     {
         return !(*this == other);
     }
 
-    bool operator>(const Double& other)
+    bool operator>(const Double& other) const
     {
         return m_x > other.m_x;
     }
 
-    bool operator<(const Double& other)
+    bool operator<(const Double& other) const
     {
         return m_x < other.m_x;
     }
 
-    bool operator>=(const Double& other)
+    bool operator>=(const Double& other) const
     {
         return m_x > other.m_x;
     }
 
-    bool operator<=(const Double& other)
+    bool operator<=(const Double& other) const
     {
         return m_x < other.m_x;
     }
-
-
 
     template<typename T>
-    bool operator==(T x)
+    bool operator==(T x) const
     {
         return (abs(x - m_x) <= m_diff);
     }
 
     template<typename T>
-    bool operator!=(T other)
+    bool operator!=(T other) const
     {
         return !(*this == other);
     }
 
     template<typename T>
-    bool operator>(T x)
+    bool operator>(T x) const
     {
         return m_x > x;
     }
 
     template<typename T>
-    bool operator<(T x)
+    bool operator<(T x) const
     {
         return m_x < x;
     }
 
     template<typename T>
-    bool operator>=(T x)
+    bool operator>=(T x) const
     {
         return m_x > x;
     }
 
     template<typename T>
-    bool operator<=(T x)
+    bool operator<=(T x) const
     {
         return m_x < x;
     }
@@ -114,57 +113,55 @@ public:
         return *this;
     }
 
-    Double operator-()
+    Double operator-() const
     {
-        m_x = -m_x;
-
-        return *this;
+        return Double(-m_x);
     }
 
-    Double operator+(const Double& other)
+    Double operator+(const Double& other) const
     {
         return (m_x + other.m_x);
     }
 
-    Double operator-(const Double& other)
+    Double operator-(const Double& other) const
     {
         return (m_x - other.m_x);
     }
 
-    Double operator*(const Double& other)
+    Double operator*(const Double& other) const
     {
         return (m_x * other.m_x);
     }
 
-    Double operator/(const Double& other)
+    Double operator/(const Double& other) const
     {
         return (m_x / other.m_x);
     }
 
     template <typename T>
-    Double operator+(T x)
+    Double operator+(T x) const
     {
         return (m_x + x);
     }
 
     template <typename T>
-    Double operator-(T x)
+    Double operator-(T x) const
     {
         return (m_x - x);
     }
 
     template <typename T>
-    Double operator*(T x)
+    Double operator*(T x) const
     {
         return (m_x * x);
     }
 
     template <typename T>
-    Double operator/(T x)
+    Double operator/(T x) const
     {
         return (m_x / x);
     }
-    inline Double abs()
+    inline Double abs() const
     {
         return (m_x >= 0) ? m_x : -m_x;
     }

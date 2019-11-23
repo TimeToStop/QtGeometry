@@ -6,6 +6,8 @@
 #include "Shape/chooseshapedialog.h"
 #include "Shape/createshapedialog.h"
 
+#include "Line/line.h"
+
 Field::Field(int w, int h, QWidget* parent):
     QWidget(parent),
     m_width(w),
@@ -30,6 +32,8 @@ Field::Field(int w, int h, QWidget* parent):
     m_points.push_back(new PointUI(10, 6, "B"));
     m_points.push_back(new PointUI(-3, -8, "C"));
     m_points.push_back(new PointUI(7, -15, "D"));
+
+    m_shapes.push_back(new Line(m_points[0], m_points[1]));
 
     repaint();
 }
@@ -168,7 +172,6 @@ void Field::mouseMoveEvent(QMouseEvent* e)
             if(e->isSelected())
             {
                e->movePosXOY(point / static_cast<double>(m_step));
-               e->countChild();
             }
         }
     }
@@ -233,6 +236,9 @@ void Field::drawGrid(QPainter& painter)
 
     int ch_x_lines = (m_p >> 1)  + m_right_click_delta.x() / m_step;
     int ch_y_lines = ((m_height / m_step) >> 1)  + m_right_click_delta.y() / m_step;
+
+    Line::setLeft(-ch_x_lines - 1);
+    Line::setRight(-ch_x_lines + m_p + 1);
 
     QString buff;
 

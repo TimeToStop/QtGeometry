@@ -23,8 +23,6 @@ private:
     Objects m_parents;
     Objects m_childs;
 
-    bool m_is_changed;
-
     mutable bool m_is_properties_open;
     PropertiesObjectDialog* m_properties;
 
@@ -40,7 +38,6 @@ public:
     virtual void recount() = 0;
     virtual void draw(QPainter&) const = 0;
     void countChild();
-    void change();
 
     void showProperties() const;
     void hideProperties() const;
@@ -54,7 +51,6 @@ protected:
 private:
     void addChild(Object*);
     void eraseChild(Object*);
-    void setChangeFalse();
 };
 
 #endif // OBJECT_H

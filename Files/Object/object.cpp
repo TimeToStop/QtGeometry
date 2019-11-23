@@ -17,7 +17,6 @@ void Object::setField(Field * field)
 Object::Object():
     m_parents(),
     m_childs(),
-    m_is_changed(true),
     m_is_properties_open(false),
     m_properties(nullptr)
 {
@@ -27,7 +26,6 @@ Object::Object():
 Object::Object(Object* parent):
     m_parents(),
     m_childs(),
-    m_is_changed(true),
     m_is_properties_open(false),
     m_properties(nullptr)
 {
@@ -38,7 +36,6 @@ Object::Object(Object* parent):
 Object::Object(const int N, ...):
     m_parents(),
     m_childs(),
-    m_is_changed(true),
     m_is_properties_open(false),
     m_properties(nullptr)
 {    
@@ -80,44 +77,18 @@ Object::~Object()
 
 void Object::countChild()
 {
-    if(m_is_changed)
-    {
-        recount();
-        m_is_changed = false;
-    }
+    recount();
 
     for(Object* childs : m_childs)
     {
-        if(m_is_changed)
-        {
-            childs->countChild();
-        }
-    }
-}
-
-void Object::change()
-{    
-    if(m_is_properties_open)
-    {
-        recount();
-        m_properties->setPropertiesToDialog();
-
-        m_is_changed = false;
-    }
-    else
-    {
-        m_is_changed = true;
-    }
-
-    for(Object* childs : m_childs)
-    {
-        childs->change();
+        childs->countChild();
     }
 }
 
 void Object::showProperties() const
 {
     m_is_properties_open = true;
+    m_properties->setPropertiesToDialog();
     m_properties->show();
 }
 
@@ -156,9 +127,4 @@ void Object::eraseChild(Object* child)
             return;
         }
     }
-}
-
-void Object::setChangeFalse()
-{
-    m_is_changed = false;
 }

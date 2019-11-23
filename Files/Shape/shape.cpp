@@ -14,14 +14,6 @@ Shape::Shape(Type type, Object * parent):
 
 }
 
-template<typename ... Objs>
-Shape::Shape(Type type, const int N, Objs ... parents):
-    Object(N, parents ...),
-    m_type(type)
-{
-
-}
-
 Shape::~Shape()
 {
 
@@ -36,7 +28,7 @@ QString Shape::nameAndType() const
 {
     switch(m_type)
     {
-    case Line: return "Line: " + name();
+    case Type_Line: return "Line: " + name();
     }
 }
 

@@ -5,7 +5,7 @@
 
 enum Type
 {
-    Line
+    Type_Line
 };
 
 class Shape : public Object
@@ -16,7 +16,12 @@ public:
     Shape(Type);
     Shape(Type, Object*);
     template<typename ... Objs>
-    Shape(Type, const int, Objs ...);
+    Shape(Type type, const int N, Objs ... parents):
+        Object(N, parents ...),
+        m_type(type)
+    {
+
+    }
     virtual ~Shape();
 
     virtual void recount() = 0;

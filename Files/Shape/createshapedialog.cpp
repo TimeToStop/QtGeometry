@@ -53,7 +53,7 @@ void CreateShapeDialog::admit()
 {
     switch(m_box->currentIndex())
     {
-        case Type::Line:
+        case Type::Type_Line:
             break;
     }
 }

@@ -35,6 +35,8 @@ ChooseShapeDialog::ChooseShapeDialog(const std::vector<Shape*>& points, QWidget 
 
     m_list = list;
 
+    m_list->addItem("choose...");
+
     for(Shape* e : points)
     {
         m_list->addItem(e->nameAndType());

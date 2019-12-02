@@ -63,7 +63,7 @@ void PointUI::setPosXOY(QPointF pos)
     m_pos = m_field->fromXOY(pos);
     m_posXOY = pos;
 
-    countChild();
+    count();
 }
 
 void PointUI::movePos(QPoint pos)
@@ -76,7 +76,7 @@ void PointUI::movePosXOY(QPointF pos)
     m_posXOY += pos;
     m_pos = m_field->fromXOY(m_posXOY);
 
-    countChild();
+    count();
 }
 
 void PointUI::recount()

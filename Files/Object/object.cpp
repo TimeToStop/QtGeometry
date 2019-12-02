@@ -2,6 +2,8 @@
 #include "Files/field.h"
 #include "propertiesobjectdialog.h"
 
+#include <stdarg.h>
+
 Field* Object::m_field = nullptr;
 bool Object::m_protect = true;
 
@@ -23,32 +25,18 @@ Object::Object():
 
 }
 
-Object::Object(Object* parent):
-    m_parents(),
-    m_childs(),
-    m_is_properties_open(false),
-    m_properties(nullptr)
+Object::Object(int n, ...)
 {
-    m_parents.push_back(parent);
-    parent->addChild(this);
-}
-
-Object::Object(const int N, ...):
-    m_parents(),
-    m_childs(),
-    m_is_properties_open(false),
-    m_properties(nullptr)
-{    
     va_list list;
 
-    va_start(list, N);
+    va_start(list, n);
 
-    for(int i = 0; i < N; i++)
+    for(int i = 0; i < n; i++)
     {
-        Object* parent = va_arg(list, Object*);
+        Object* obj = va_arg(list, Object*);
 
-        m_parents.push_back(parent);
-        parent->addChild(this);
+        addParent(obj);
+        obj->addChild(this);
     }
 
     va_end(list);
@@ -56,32 +44,25 @@ Object::Object(const int N, ...):
 
 Object::~Object()
 {
-    for(Object* parents : m_parents)
+    for(Object* child : m_childs)
     {
-        parents->eraseChild(this);
+        m_field->eraseShape(child);
+        delete child;
     }
 
-    for(Object* childs : m_childs)
+    for(Object* parent : m_parents)
     {
-        delete childs;
-    }
-
-    m_parents.clear();
-    m_childs.clear();
-
-    if(m_properties)
-    {
-        delete m_properties;
+        parent->eraseChild(this);
     }
 }
 
-void Object::countChild()
+void Object::count()
 {
     recount();
 
-    for(Object* childs : m_childs)
+    for(Object* child : m_childs)
     {
-        childs->countChild();
+        child->count();
     }
 }
 
@@ -117,7 +98,12 @@ void Object::addChild(Object* child)
     m_childs.push_back(child);
 }
 
-void Object::eraseChild(Object* child)
+void Object::addParent(Object* parent)
+{
+    m_parents.push_back(parent);
+}
+
+void Object::eraseChild(Object * child)
 {
     for(auto iter = m_childs.begin(); iter != m_childs.end(); iter++)
     {

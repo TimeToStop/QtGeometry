@@ -35,6 +35,8 @@ ChoosePointUIDialog::ChoosePointUIDialog(const std::vector<PointUI*>& points, QW
 
     m_list = list;
 
+    m_list->addItem("choose...");
+
     for(PointUI* e : points)
     {
         m_list->addItem(e->name());

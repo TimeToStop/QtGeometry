@@ -29,6 +29,10 @@ public:
 
     virtual void recount();
     virtual void draw(QPainter &) const;
+
+    Double a() const;
+    Double b() const;
+    Double c() const;
 };
 
 #endif // LINE_H

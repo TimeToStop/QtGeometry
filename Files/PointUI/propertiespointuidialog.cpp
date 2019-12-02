@@ -13,6 +13,7 @@
 PropertiesPointUIDialog::PropertiesPointUIDialog(PointUI* point, QWidget *parent) :
     PropertiesObjectDialog(point, parent)
 {
+    setWindowTitle("PointUI: " + dynamic_cast<PointUI*>(m_obj)->name());
     setMinimumSize(200, 150);
 
     QVBoxLayout* main = new QVBoxLayout(this);
@@ -48,10 +49,8 @@ PropertiesPointUIDialog::PropertiesPointUIDialog(PointUI* point, QWidget *parent
     QHBoxLayout* buttons = new QHBoxLayout();
 
     QPushButton* admit = new QPushButton("Ok");
-    QPushButton* exit = new QPushButton("Exit");
 
     buttons->addWidget(admit);
-    buttons->addWidget(exit);
 
     main->addLayout(name);
     main->addLayout(posX);
@@ -59,7 +58,6 @@ PropertiesPointUIDialog::PropertiesPointUIDialog(PointUI* point, QWidget *parent
     main->addLayout(buttons);
 
     connect(admit, SIGNAL(clicked()), this, SLOT(accept()));
-    connect(exit, SIGNAL(clicked()), this, SLOT(reject()));
 
     nameEdit->setReadOnly(true);
 

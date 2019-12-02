@@ -8,7 +8,7 @@ Shape::Shape(Type type):
 }
 
 Shape::Shape(Type type, Object * parent):
-    Object(parent),
+    Object(1, parent),
     m_type(type)
 {
 

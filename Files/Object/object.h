@@ -31,13 +31,13 @@ protected:
 
 public:
     Object();
-    Object(Object*);
-    Object(const int, ...);
+    Object(int, ...);
     virtual ~Object();
 
     virtual void recount() = 0;
     virtual void draw(QPainter&) const = 0;
-    void countChild();
+
+    void count();
 
     void showProperties() const;
     void hideProperties() const;
@@ -50,6 +50,8 @@ protected:
 
 private:
     void addChild(Object*);
+    void addParent(Object*);
+
     void eraseChild(Object*);
 };
 

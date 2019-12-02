@@ -16,6 +16,9 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    Files/Line/createlinedialog.cpp \
+    Files/Line/line.cpp \
+    Files/Line/propertieslinedialog.cpp \
     Files/Object/object.cpp \
     Files/Object/propertiesobjectdialog.cpp \
     Files/PointUI/choosepointuidialog.cpp \
@@ -26,7 +29,6 @@ SOURCES += \
     Files/Shape/chooseshapedialog.cpp \
     Files/Shape/createabstractshapedialog.cpp \
     Files/Shape/createshapedialog.cpp \
-    Files/Shape/propertiesshapedialog.cpp \
     Files/Shape/shape.cpp \
     Files/double.cpp \
     Files/field.cpp \
@@ -34,6 +36,9 @@ SOURCES += \
     widget.cpp
 
 HEADERS += \
+    Files/Line/createlinedialog.h \
+    Files/Line/line.h \
+    Files/Line/propertieslinedialog.h \
     Files/Object/object.h \
     Files/Object/propertiesobjectdialog.h \
     Files/PointUI/choosepointuidialog.h \
@@ -44,7 +49,6 @@ HEADERS += \
     Files/Shape/chooseshapedialog.h \
     Files/Shape/createabstractshapedialog.h \
     Files/Shape/createshapedialog.h \
-    Files/Shape/propertiesshapedialog.h \
     Files/Shape/shape.h \
     Files/double.h \
     Files/field.h \

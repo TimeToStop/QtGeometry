@@ -34,6 +34,8 @@ Field::Field(int w, int h, QWidget* parent):
     m_points.push_back(new PointUI(7, -15, "D"));
 
     m_shapes.push_back(new Line(m_points[0], m_points[1]));
+    m_shapes.push_back(new Line(m_points[1], m_points[2]));
+    m_shapes.push_back(new Line(m_points[0], m_points[2]));
 
     repaint();
 }
@@ -299,6 +301,18 @@ inline int Field::min(int a, int b) const
     return (a < b) ? a : b;
 }
 
+void Field::eraseShape(Object * obj)
+{
+    for(auto iter = m_shapes.begin(); iter != m_shapes.end(); iter++)
+    {
+        if(*iter == obj)
+        {
+            m_shapes.erase(iter);
+            return;
+        }
+    }
+}
+
 void Field::addPointUIDialog()
 {
     CreatePointDialog dialog(m_points, this);
@@ -334,8 +348,11 @@ void Field::rmPointUIDialog()
 
         const int r = dialog.exec();
 
-        delete m_points[r];
-        m_points.erase(m_points.begin() + r);
+        if(r)
+        {
+            delete m_points[r - 1];
+            m_points.erase(m_points.begin() + r - 1);
+        }
     }
 }
 
@@ -354,7 +371,10 @@ void Field::rmShapeDialog()
 
         const int r = dialog.exec();
 
-        delete m_shapes[r];
-        m_shapes.erase(m_shapes.begin() + r);
+        if(r)
+        {
+            delete m_shapes[r - 1];
+            m_shapes.erase(m_shapes.begin() + r - 1);
+        }
     }
 }

@@ -54,12 +54,13 @@ public:
     QPoint fromXOY(QPointF) const;
     QPointF toXOY(QPoint) const;
 
+    void eraseShape(Object*);
+
 private:
     void drawGrid(QPainter&);
 
     int max(int, int) const;
     int min(int, int) const;
-
 signals:
 
 public slots:

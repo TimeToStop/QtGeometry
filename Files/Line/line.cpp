@@ -1,6 +1,7 @@
 #include "line.h"
 
 #include "Files/field.h"
+#include "Files/Line/propertieslinedialog.h"
 
 int Line::m_left = 0;
 int Line::m_right = 0;
@@ -32,6 +33,7 @@ Line::Line(PointUI* point1, PointUI* point2, const QString & name):
         setName(name);
     }
 
+    setPropertiesDialog(new PropertiesLineDialog(this, m_field));
     recount();
 }
 
@@ -60,4 +62,19 @@ void Line::draw(QPainter & painter) const
     {
          painter.drawLine(m_field->fromXOY(QPointF(m_left, -(m_a * m_left + m_c)/m_b)), m_field->fromXOY(QPointF(m_right, -(m_a * m_right + m_c)/m_b)));
     }
+}
+
+Double Line::a() const
+{
+    return m_a;
+}
+
+Double Line::b() const
+{
+    return m_b;
+}
+
+Double Line::c() const
+{
+    return m_c;
 }

@@ -325,8 +325,11 @@ void Field::openPointUIPropertiesDialog()
     if(m_points.size())
     {
         ChoosePointUIDialog dialog(m_points, this);
-
-        m_points[dialog.exec()]->showProperties();
+        const int r = dialog.exec();
+        if(r)
+        {
+            m_points[r - 1]->showProperties();
+        }
     }
 }
 
@@ -336,7 +339,12 @@ void Field::openShapePropertiesDialog()
     {
         ChooseShapeDialog dialog(m_shapes, this);
 
-        m_shapes[dialog.exec()]->showProperties();
+        const int r = dialog.exec();
+
+        if(r)
+        {
+            m_shapes[dialog.exec() - 1]->showProperties();
+        }
     }
 }
 

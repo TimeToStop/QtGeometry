@@ -12,11 +12,11 @@ class CreateAbstractShapeDialog : public QDialog
     Q_OBJECT
 
 protected:
-    const std::vector<Shape*>& m_shapes;
-    const std::vector<PointUI*>& m_points;
+    std::vector<Shape*>& m_shapes;
+    std::vector<PointUI*>& m_points;
 
 public:
-    explicit CreateAbstractShapeDialog(const std::vector<Shape*>&, const std::vector<PointUI*>&, QWidget *parent = nullptr);
+    explicit CreateAbstractShapeDialog(std::vector<Shape*>&, std::vector<PointUI*>&, QWidget *parent = nullptr);
     virtual ~CreateAbstractShapeDialog();
 
 signals:

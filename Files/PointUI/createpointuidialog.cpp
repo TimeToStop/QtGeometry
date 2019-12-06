@@ -1,4 +1,4 @@
-#include "createpointdialog.h"
+#include "createpointuidialog.h"
 
 #include <QHBoxLayout>
 #include <QVBoxLayout>
@@ -8,7 +8,7 @@
 #include <QSpacerItem>
 #include <QDoubleValidator>
 
-CreatePointDialog::CreatePointDialog(std::vector<PointUI*> &points, QWidget* parent):
+CreatePointUIDialog::CreatePointUIDialog(std::vector<PointUI*> &points, QWidget* parent):
     QDialog(parent),
     m_points(points)
 {
@@ -71,12 +71,12 @@ CreatePointDialog::CreatePointDialog(std::vector<PointUI*> &points, QWidget* par
     m_y->setValidator(validator);
 }
 
-CreatePointDialog::~CreatePointDialog()
+CreatePointUIDialog::~CreatePointUIDialog()
 {
 
 }
 
-void CreatePointDialog::admit()
+void CreatePointUIDialog::admit()
 {
     if(m_name->text() == "" || m_x->text() == "" || m_y->text() == "")
     {

@@ -1,17 +1,24 @@
 #ifndef CREATELINEDIALOG_H
 #define CREATELINEDIALOG_H
 
-#include <QWidget>
+#include "Files/Shape/createabstractshapedialog.h"
 
-class CreateLineDialog : public QWidget
+#include <QComboBox>
+
+class CreateLineDialog : public CreateAbstractShapeDialog
 {
     Q_OBJECT
+
+    QComboBox* m_box;
+
 public:
-    explicit CreateLineDialog(QWidget *parent = nullptr);
+    explicit CreateLineDialog(std::vector<Shape*>&, std::vector<PointUI*>&, QWidget *parent = nullptr);
+    virtual ~CreateLineDialog();
 
 signals:
 
 public slots:
+    void admit();
 };
 
 #endif // CREATELINEDIALOG_H

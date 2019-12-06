@@ -1,7 +1,7 @@
 #include "field.h"
 
 #include "PointUI/choosepointuidialog.h"
-#include "PointUI/createpointdialog.h"
+#include "PointUI/createpointuidialog.h"
 
 #include "Shape/chooseshapedialog.h"
 #include "Shape/createshapedialog.h"
@@ -89,6 +89,15 @@ void Field::paintEvent(QPaintEvent*)
 
 void Field::mousePressEvent(QMouseEvent* e)
 {
+    if((e->button() == Qt::LeftButton && m_is_right_mouse_click)
+            || (e->button() == Qt::RightButton && m_is_left_mouse_click))
+    {
+        m_is_left_mouse_click = false;
+        m_is_right_mouse_click = false;
+
+        return;
+    }
+
     if(e->button() == Qt::LeftButton)
     {
         m_is_left_mouse_click = true;
@@ -315,7 +324,7 @@ void Field::eraseShape(Object * obj)
 
 void Field::addPointUIDialog()
 {
-    CreatePointDialog dialog(m_points, this);
+    CreatePointUIDialog dialog(m_points, this);
 
     dialog.exec();
 }

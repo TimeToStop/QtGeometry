@@ -6,7 +6,7 @@
 #include <QDialog>
 #include <QLineEdit>
 
-class CreatePointDialog : public QDialog
+class CreatePointUIDialog : public QDialog
 {
     Q_OBJECT
 
@@ -17,8 +17,8 @@ class CreatePointDialog : public QDialog
     QLineEdit* m_y;
 
 public:
-    explicit CreatePointDialog(std::vector<PointUI*>& points, QWidget *parent = nullptr);
-    virtual ~CreatePointDialog();
+    explicit CreatePointUIDialog(std::vector<PointUI*>& points, QWidget *parent = nullptr);
+    virtual ~CreatePointUIDialog();
 
 signals:
 
